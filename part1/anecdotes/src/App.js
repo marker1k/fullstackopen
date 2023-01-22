@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-const TopAnecdote = (props) => {
-  if (props.totalVotes === 0) {
+const TopAnecdote = ({ totalVotes, anecdotes, maxVoteKey }) => {
+  if (totalVotes === 0) {
     return (
       <div>
         There is no votes yet.
@@ -10,7 +10,7 @@ const TopAnecdote = (props) => {
   }
   return (
     <div>
-      {props.anecdotes[props.maxVoteKey]}
+      {anecdotes[maxVoteKey]}
     </div>
   )
 }
