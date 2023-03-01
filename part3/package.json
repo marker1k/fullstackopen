@@ -1,0 +1,40 @@
+{
+  "name": "phonebook-backend",
+  "version": "0.0.1",
+  "description": "helsinki fullstack course part3 exercise",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rm -rf /build && cd ../helsinki-submission/part2/phonebook && npm run build && cp -r build ../../../helsinki-submission-part3-backend",
+    "deploy": "/home/marker1k/.fly/bin/flyctl deploy",
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marker1k/fullstackopen-part3-nodejs-and-express.git"
+  },
+  "author": "Mark Polovtsev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marker1k/fullstackopen-part3-nodejs-and-express/issues"
+  },
+  "homepage": "https://github.com/marker1k/fullstackopen-part3-nodejs-and-express#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.10.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^2.0.20"
+  }
+}

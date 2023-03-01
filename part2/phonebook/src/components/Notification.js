@@ -4,7 +4,7 @@ const Notification = ({ message, hideNotification }) => {
   }
 
   const classType = message.type === 'error' ? 'notification notification__type-error' : 'notification notification__type-info'
-  hideNotification(3000)
+  hideNotification(5000)
 
   return (
     <div className={classType}>

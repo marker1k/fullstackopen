@@ -14,7 +14,6 @@ const App = () => {
   const [notification, setNotification] = useState(null)
 
   useEffect(() => {
-    console.log('Use Effect')
     personsService
       .getAll()
       .then(response => {
@@ -59,8 +58,15 @@ const App = () => {
             text: `Added ${newName}`,
             type: 'info'
           })
+          clearFields()
         })
-      clearFields()
+        .catch(error => {
+          console.log(error.response.data.message)
+          setNotification({
+            text: error.response.data.message,
+            type: 'error'
+          })
+        })
     } else {
       // if person with given name exists, then update phone number
       const existingPerson = persons.find(person => person.name === newName)
@@ -80,8 +86,14 @@ const App = () => {
             text: `Updated ${updatedPerson.name}`,
             type: 'info'
           })
+          clearFields()
         })
-      clearFields()
+        .catch(error => {
+          setNotification({
+            text: error.response.data.message,
+            type: 'error'
+          })
+        })      
     }
   }
 
@@ -90,7 +102,9 @@ const App = () => {
     if (window.confirm(`Delete ${person.name}?`)) {
       personsService
         .deletePerson(id)
-        .then(response => setPersons(persons.filter(person => person.id !== id)))
+        .then(response => {
+          setPersons(persons.filter(person => person.id !== id))
+        })
         .catch(error => {
           setNotification({
             text: `Information about ${person.name} has already been removed from server`,
